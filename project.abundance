@@ -1,0 +1,15 @@
+{
+    "atomType": "Molecule",
+    "name": "SkullFull",
+    "x": 0,
+    "y": 0,
+    "uniqueID": "004e0dc7-eff5-4644-a8bf-9b9c28779344",
+    "ioValues": [],
+    "topLevel": true,
+    "allAtoms": [],
+    "allConnectors": [],
+    "unitsKey": "MM",
+    "fileTypeVersion": 1,
+    "compiledBom": {},
+    "filetypeVersion": 1
+}
