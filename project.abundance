@@ -8002,10 +8002,6 @@
             "tags": [],
             "bom": []
           }
-        },
-        {
-          "name": "Shape 2",
-          "ioValue": null
         }
       ]
     },
@@ -8033,12 +8029,6 @@
     }
   ],
   "allConnectors": [
-    {
-      "ap1Name": "output",
-      "ap2Name": "Shape 2",
-      "ap1ID": "e3778fec-0604-4cd7-a33c-a9385611b2e6",
-      "ap2ID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6"
-    },
     {
       "ap1Name": "geometry or number",
       "ap2Name": "Shape 1",
