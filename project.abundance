@@ -26,28 +26,6 @@
       "code": "\n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n     \n      ]\n\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n let reflectShape = await Scale(library[shape], 0, -1, 0)\n        return reflectShape\n\n //Console.log works for debugging to better see what is happening under the hood\n      console.log(\"Original shape bounds:\", GetBounds(importedShape))\n      console.log(\"Moved shape bounds:\", GetBounds(movedShape))\n  /**    \n      //Gets the shape from the library - no need to clone or access geometry directly\n      let importedShape = library[shape]\n\n      //Use the built-in Move function to move the shape in the X direction\n      let movedShape = await Move(importedShape, dist, 0, 0)\n\n      //Use the built-in Rotate function to rotate the shape\n      let rotatedShape = await Rotate(importedShape, 0, 45, 0)\n\n      //Use the built-in Scale function to make the shape smaller\n      let scaledShape = await Scale(importedShape, 0.8)\n*/\n     \n/**\n      //Create a new shape from scratch using replicad\n      let createdRectangle = replicad.drawRectangle(5, 7)\n      const newPlane = new replicad.Plane().pivot(0, 'Y')\n      let createdShape = createdRectangle.sketchOnPlane(newPlane).extrude(height)\n\n      //Wrap the raw replicad geometry in our assembly format\n      let shape2 = {\n          geometry: [createdShape],\n          dimension: \"3D\",\n          tags: [\"createdShape\"],\n          color: '#A3CE5B',\n          plane: newPlane,\n          bom: []\n      }\n\n      //Use the built-in Fillet function to round the edges\n      let filletedShape = await Fillet(shape2, 0.5)\n\n      //Use the built-in Chamfer function to bevel the edges  \n      let chamferedShape = await Chamfer(movedShape, 0.3)\n\n      //Use the built-in Assembly function to combine multiple shapes\n      let finalAssembly = await Assembly([rotatedShape, scaledShape, filletedShape, chamferedShape])\n\n      //You can also create boolean operations using Intersect\n      //let intersection = await Intersect(movedShape, rotatedShape)\n\n      return finalAssembly\n\n      /**\n      Built-in Functions Available:\n      - Move(geometry, x, y, z) - Move a shape in 3D space\n      - Rotate(geometry, x, y, z) - Rotate a shape around X, Y, Z axes (degrees)\n      - Scale(geometry, factor) - Scale a shape by a factor\n      - Assembly([shapes]) - Combine multiple shapes into an assembly\n      - Intersect(shape1, shape2) - Boolean intersection of two shapes\n      - GetBounds(geometry) - Get the bounding box of a shape\n      - Fillet(geometry, radius) - Round edges with specified radius\n      - Chamfer(geometry, size) - Bevel edges with specified size\n\n      To Use the Code Atom, enter your inputs to the input list as an object array:\n      const Inputs = [\n        {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"dist\", type: \"number\", defaultValue: 5},\n        {inputName: \"height\", type: \"number\", defaultValue: 10}\n      ]\n\n      Access imported geometry using library[inputName] - the built-in functions handle \n      the complexity of accessing geometry arrays and maintaining metadata automatically.\n\n      Simple Example - Move a shape:\n         const Inputs = [\n          {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n          {inputName: \"x\", type: \"number\", defaultValue: 5}\n        ]\n        let movedShape = await Move(library[shape], x, 0, 0)\n        return movedShape\n      */\n      "
     },
     {
-      "atomType": "Molecule",
-      "name": "Molecule",
-      "x": 0.3586839266450917,
-      "y": 0.48729792147806006,
-      "uniqueID": "9877ee8c-27d4-47ca-81cc-a325b03d5a3b",
-      "ioValues": [],
-      "topLevel": false,
-      "allAtoms": [
-        {
-          "atomType": "Output",
-          "name": "Output",
-          "x": 0.98,
-          "y": 0.5,
-          "uniqueID": "f6b83cb7-b612-4ca9-867d-16743ac18639",
-          "ioValues": []
-        }
-      ],
-      "allConnectors": [],
-      "fileTypeVersion": 1,
-      "compiledBom": {}
-    },
-    {
       "atomType": "GitHubMolecule",
       "name": "Skull",
       "x": 0.11704422869471412,
@@ -6930,14 +6908,1153 @@
       "unitsKey": "MM",
       "fileTypeVersion": 1,
       "compiledBom": []
+    },
+    {
+      "atomType": "Assembly",
+      "name": "Assembly",
+      "x": 0.4163969795037756,
+      "y": 0.3856812933025404,
+      "uniqueID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": {
+            "geometry": [
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": [
+                      {
+                        "geometry": "cut-cut-expand-0-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                        "tags": [
+                          "cutter",
+                          "keepout"
+                        ],
+                        "color": "#D9544D",
+                        "bom": [],
+                        "plane": {
+                          "origin": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "xDir": [
+                            1,
+                            0,
+                            0
+                          ],
+                          "normal": [
+                            0,
+                            0,
+                            1
+                          ]
+                        },
+                        "dimension": "3D"
+                      },
+                      {
+                        "geometry": "cut-expand-1-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                        "tags": [
+                          "cutter",
+                          "keepout"
+                        ],
+                        "color": "#D9544D",
+                        "bom": [],
+                        "plane": {
+                          "origin": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "xDir": [
+                            1,
+                            0,
+                            0
+                          ],
+                          "normal": [
+                            0,
+                            0,
+                            1
+                          ]
+                        },
+                        "dimension": "3D"
+                      },
+                      {
+                        "geometry": "cut-expand-2-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                        "tags": [
+                          "cutter",
+                          "keepout"
+                        ],
+                        "color": "#D9544D",
+                        "bom": [],
+                        "plane": {
+                          "origin": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "xDir": [
+                            1,
+                            0,
+                            0
+                          ],
+                          "normal": [
+                            0,
+                            0,
+                            1
+                          ]
+                        },
+                        "dimension": "3D"
+                      }
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": [
+                      {
+                        "geometry": "cut-expand-0-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                        "tags": [
+                          "cutter",
+                          "keepout"
+                        ],
+                        "color": "#D9544D",
+                        "bom": [],
+                        "plane": {
+                          "origin": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "xDir": [
+                            1,
+                            0,
+                            0
+                          ],
+                          "normal": [
+                            0,
+                            0,
+                            1
+                          ]
+                        },
+                        "dimension": "3D"
+                      },
+                      {
+                        "geometry": "cut-expand-1-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                        "tags": [
+                          "cutter",
+                          "keepout"
+                        ],
+                        "color": "#D9544D",
+                        "bom": [],
+                        "plane": {
+                          "origin": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "xDir": [
+                            1,
+                            0,
+                            0
+                          ],
+                          "normal": [
+                            0,
+                            0,
+                            1
+                          ]
+                        },
+                        "dimension": "3D"
+                      }
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-rotate-extrude-circle-90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--100-0--100--150-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-rotate-extrude-circle-90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--100-0--100--150-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-move-rotate-extrude-circle-90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--100-0--100--150-0-move-rotate-extrude-rotate-polysides-100-3-0-0--90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--90-0-0-0--200-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-move-rotate-extrude-circle-90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--100-0--100--150-0-move-rotate-extrude-rotate-polysides-100-3-0-0--90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--90-0-0-0--200-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-move-rotate-extrude-circle-90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--100-0--100--150-0-move-rotate-extrude-rotate-polysides-100-3-0-0--90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--90-0-0-0--200-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-cut-cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-move-rotate-extrude-circle-90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--100-0--100--150-0-move-rotate-extrude-rotate-polysides-100-3-0-0--90-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-1000-0--90-0-0-0--200-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              },
+              {
+                "geometry": [
+                  {
+                    "geometry": "cut-cut-rotate-move-cut-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "Panel"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#aad7f2",
+                    "bom": []
+                  },
+                  {
+                    "geometry": "cut-cut-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-move-extrude-rectangle-10000-10000-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10000-0-5000--5000-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-fuse-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--30-0-400-10-40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-10-0-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-100-0-450-10--40-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-50-400-50-10-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-90--10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-400-0-70--50-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--200--100-300-15-140-0-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-450-0--60-40-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-0-0-350-90-0-5-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10--100-100-450-0--90-10-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-50-100-350-0--120-80-rotate-move-move-extrude-polysides-450-6-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-410-0-0-10-200-0-300-180-0-0",
+                    "dimension": "3D",
+                    "tags": [
+                      "cutter",
+                      "keepout"
+                    ],
+                    "plane": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "xDir": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "normal": [
+                        0,
+                        0,
+                        1
+                      ]
+                    },
+                    "color": "#D9544D",
+                    "bom": []
+                  }
+                ],
+                "plane": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "xDir": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "normal": [
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                "color": "#aad7f2",
+                "tags": [],
+                "bom": []
+              }
+            ],
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "color": "#aad7f2",
+            "tags": [],
+            "bom": []
+          }
+        },
+        {
+          "name": "Shape 2",
+          "ioValue": null
+        }
+      ]
+    },
+    {
+      "atomType": "CutLayout",
+      "name": "Cut Layout",
+      "x": 0.5334412081984897,
+      "y": 0.3302540415704388,
+      "uniqueID": "67bab359-c86b-4ca9-8fc8-9a773bbedd1e",
+      "ioValues": [
+        {
+          "name": "Sheet Width",
+          "ioValue": 2438
+        },
+        {
+          "name": "Sheet Height",
+          "ioValue": 1219
+        },
+        {
+          "name": "Part Padding",
+          "ioValue": 10
+        }
+      ],
+      "placements": []
     }
   ],
   "allConnectors": [
+    {
+      "ap1Name": "output",
+      "ap2Name": "Shape 2",
+      "ap1ID": "e3778fec-0604-4cd7-a33c-a9385611b2e6",
+      "ap2ID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6"
+    },
+    {
+      "ap1Name": "geometry or number",
+      "ap2Name": "Shape 1",
+      "ap1ID": "0f7c64d0-7e6f-4347-9490-5d99958f5b95",
+      "ap2ID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6"
+    },
     {
       "ap1Name": "geometry or number",
       "ap2Name": "shape",
       "ap1ID": "b3689e67-2a3f-4ea6-8333-3a8732eb1731",
       "ap2ID": "e3778fec-0604-4cd7-a33c-a9385611b2e6"
+    },
+    {
+      "ap1Name": "geometry",
+      "ap2Name": "geometry",
+      "ap1ID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6",
+      "ap2ID": "67bab359-c86b-4ca9-8fc8-9a773bbedd1e"
     }
   ],
   "unitsKey": "MM",
