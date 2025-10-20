@@ -8008,8 +8008,8 @@
     {
       "atomType": "CutLayout",
       "name": "Cut Layout",
-      "x": 0.5334412081984897,
-      "y": 0.3302540415704388,
+      "x": 0.5388349514563107,
+      "y": 0.23787528868360275,
       "uniqueID": "67bab359-c86b-4ca9-8fc8-9a773bbedd1e",
       "ioValues": [
         {
@@ -8026,6 +8026,31 @@
         }
       ],
       "placements": []
+    },
+    {
+      "atomType": "Export",
+      "name": "Export",
+      "x": 0.5269687162891047,
+      "y": 0.5381062355658198,
+      "uniqueID": "2c93a4eb-fe0e-482f-ae47-f1992d710d2a",
+      "ioValues": [
+        {
+          "name": "File Type",
+          "ioValue": "STL"
+        },
+        {
+          "name": "Resolution (dpi)",
+          "ioValue": 96
+        },
+        {
+          "name": "Part Name",
+          "ioValue": "SkullFull"
+        }
+      ],
+      "type": null,
+      "resolution": 96,
+      "importIndex": 0,
+      "partName": "SkullFull"
     }
   ],
   "allConnectors": [
@@ -8046,6 +8071,12 @@
       "ap2Name": "geometry",
       "ap1ID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6",
       "ap2ID": "67bab359-c86b-4ca9-8fc8-9a773bbedd1e"
+    },
+    {
+      "ap1Name": "geometry",
+      "ap2Name": "geometry",
+      "ap1ID": "dda89e3b-fd6e-49b6-92a0-bd3b9a937db6",
+      "ap2ID": "2c93a4eb-fe0e-482f-ae47-f1992d710d2a"
     }
   ],
   "unitsKey": "MM",
